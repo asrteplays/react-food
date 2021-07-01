@@ -1,0 +1,221 @@
+@import "./styles/nullstyle.scss";
+@import "./styles/extendstyle.scss";
+@import "./styles/herostyle.scss";
+@import "./styles/productstyle.scss";
+
+body {
+  @include font (16px, 400, $mainColor, 1.2);
+
+  background-color: $whiteColor;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 55px;
+}
+
+.img {
+  @extend %img;
+}
+
+//Header
+.header {
+  height: 105px;
+  @include flex(flex, normal, center, row);
+
+  position: relative;
+}
+
+.header__inner {
+  @include flex(flex, space-between, normal, row);
+}
+
+.header-inner__logo {
+  padding: 30px;
+
+  background-color: $whiteColor;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+
+  @include position(absolute, 0, inherit, inherit, 1)
+}
+
+.nav {
+  margin-left: 280px;
+}
+
+.nav__list {
+  height: 100%;
+  @include flex(flex, normal, center, row);
+}
+
+.nav-list__item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.nav-list__link {
+  @extend %link;
+}
+
+.header__buttons {
+  @include flex(flex, normal, center, row);
+
+  .button-search,
+  .button-busket {
+    border-right: 1px solid #999898;
+  }
+}
+
+.button-search,
+.button-busket,
+.button-favorite {
+  @extend %btn-icon
+}
+
+.button-favorite {
+  svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  path {
+    stroke: #333333;
+    transition: stroke .2s ease-in-out;
+  }
+
+  &:hover {
+    path {
+      fill: transparent;
+      stroke: $gingerColor;
+    }
+  }
+}
+
+.button-login {
+  margin-left: 20px;
+  @extend %button;
+}
+
+// Drawer
+.overlay {
+  height: 100%;
+  @include flex (flex, flex-end, normal, row);
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  @include position (fixed, 0, 0, 0, 10);
+
+  .container {
+    @include flex (flex, flex-end, normal, row);
+  }
+}
+
+.drawer {
+  @include flex (flex, normal, normal, column);
+
+  width: 520px;
+  border-radius: 5px;
+  padding: 35px;
+
+  background-color: $whiteColor;
+  @include boxShadow (20px);
+}
+
+.drawer__heading {
+  margin-bottom: 15px;
+  @include flex (flex, space-between, center, row);
+}
+
+.drawer__title {
+  @include font (24px, 700, $mainColor, 1.2);
+}
+
+.button-cross {
+  @extend %btn-icon;
+  padding: 10px;
+  border-radius: 5px;
+
+  background-color: $grayColor;
+}
+
+.drawer__cart {
+  flex: 1;
+  margin-bottom: 15px;
+  border-bottom: 2px solid $grayColor;
+
+  overflow: auto;
+}
+
+.drawer-cart__item {
+  @include flex (flex, space-between, center, row);
+  border: 2px solid $grayColor;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.drawer-cart__content {
+  @include flex (flex, normal, center, row);
+  width: 60%;
+}
+
+.drawer-cart__img {
+  width: 100px;
+  height: 150px;
+
+  img {
+    @extend %img;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.drawer-cart__name {
+  text-align: center;
+  @extend %font-desc;
+
+  span {
+    @extend %font-name;
+    font-style: italic;
+  }
+}
+
+.drawer-cart__price {
+  @extend %font-price;
+}
+
+.button-trash {
+  @extend %btn-icon;
+  margin-left: 5px;
+  padding: 10px;
+  border-radius: 5px;
+
+  background-color: $grayColor;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.drawer__total {
+  margin-bottom: 15px;
+  @include flex (flex, space-between, normal, row);
+  @include font (24px, 700, $mainColor, 1.2);
+}
+
+.button-order {
+  @extend %button;
+  padding: 15px 30px;
+
+  font-size: 24px;
+
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+
+  &:hover {
+    color: $whiteColor;
+
+    background-color: $gingerColor;
+  }
+}
