@@ -4,6 +4,7 @@ import Product from "./components/Product";
 import Drawer from "./components/Drawer"
 
 function App() {
+  console.log('test the new branch')
   const [items, setItems] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
 
